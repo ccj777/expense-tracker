@@ -14,20 +14,21 @@
       </div>
       <div class="col-12 mb-4">
         <label for="date" class="form-label">日期 *：</label>
-        <input type="date" class="form-control" id="date" placeholder="日期" name="date" value="{{ expense.date}}" required>
+        <input type="date" class="form-control" id="date" placeholder="日期" name="date" value="{{dateFormat expense.date}}" required>
         <div class="invalid-feedback">
           請輸入日期
         </div>
       </div>
       <div class="col-12 mb-4">
         <label for="category" class="form-label">類別 *：</label>
-        <select class="form-select" id="category" aria-label=".form-select-lg example" name="category" value="{{expense.category}}"required>
+        <select class="form-select" id="category" aria-label=".form-select-lg example" name="category" value="{{expense.category}}" required>
           <option selected disabled value="">選擇類別</option>
-          <option value="1">家居物業</option>
-          <option value="2">交通出行</option>
-          <option value="3">休閒娛樂</option>
-          <option value="4">餐飲食品</option>
-          <option value="5">其他</option>
+          {{!--helper ifEqual 定義為兩質相同回傳true  --}}
+          <option value="1" {{#ifEqual expense.categoryId 1 }}selected{{/ifEqual}}>家居物業</option>
+          <option value="2" {{#ifEqual expense.categoryId 2 }}selected{{/ifEqual}}>交通出行</option>
+          <option value="3" {{#ifEqual expense.categoryId 3 }}selected{{/ifEqual}}>休閒娛樂</option>
+          <option value="4" {{#ifEqual expense.categoryId 4 }}selected{{/ifEqual}}>餐飲食品</option>
+          <option value="5" {{#ifEqual expense.categoryId 5 }}selected{{/ifEqual}}>其他</option>
         </select>
         <div class="invalid-feedback">
           請選擇類別

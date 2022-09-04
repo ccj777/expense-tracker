@@ -19,7 +19,18 @@ const app = express()
 
 
 // set view engine
-app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
+app.engine('hbs', exphbs({
+  defaultLayout: 'main',
+  extname: '.hbs',
+  helpers: {
+    dateFormat(date) {
+      return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+    },
+    ifEqual(a, b, options) {
+      return a === b ? options.fn(this) : options.inverse(this)
+    },
+  }
+}))
 app.set('view engine', 'hbs')
 
 app.use(express.static('public'))
