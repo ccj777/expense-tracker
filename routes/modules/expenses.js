@@ -47,17 +47,19 @@ router.put('/:id', (req, res) => {
     })
 })
 
-// 匯出路由模組
-  module.exports = router
+
 //delete 的路由
-// router.delete('/:id', (req, res) => {
-//   const userId = req.user._id
-//   const _id = req.params.id
-//   return Expense.findOne({ _id, userId })
-//     .then(expense => expense.remove())
-//     .then(() => res.redirect('/'))
-//     .catch(error => console.log(error))
-// })
+router.delete('/:id', (req, res) => {
+  // const userId = req.user._id
+  const _id = req.params.id
+  return Expense.findOne({ _id })//, userId
+    .then(expense => expense.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+// 匯出路由模組
+module.exports = router
 
 
 
