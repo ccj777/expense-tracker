@@ -9,7 +9,11 @@ router.get('/', (req, res) => {
     .lean()
     .sort({ name: 'asc' }) // 正序asc，反序desc
     .then(expenses => {
-      res.render('index', { expenses })
+      let totalAmount = 0
+      for (let i = 0; i < expenses.length; i++) {
+        totalAmount += expenses[i].amount
+      }
+      res.render('index', { expenses,totalAmount })
     })
     .catch(error => console.error(error))
 })

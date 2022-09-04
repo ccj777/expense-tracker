@@ -1,22 +1,46 @@
 
-
-<ul class="list-group">
-    {{#each expenses}}
-    <li class="list-group-item">
-        <div class="row">
-            <div class="col-auto me-auto">
-                <h4 style="display: inline;">
-                    {{this.name}}
-                </h4>
-            </div>
-            <div class="col-auto">
-                <a class="btn btn-success" href="/expenses/{{this._id}}/edit">edit</a>
-                <form action="/expenses/{{this._id}}?_method=DELETE" method="POST" style="display: inline">
-                    <button class="btn btn-danger" type="submit">delete</button>
-                </form>
-            </div>
+<div class="container mt-5">
+    <div class="row text-center">
+        <div class="col">
+            <p>總金額：</p>
+            <h2 class="text-center text-success">{{ totalAmount }}</h2>
         </div>
-    </li>
-    {{/each}}
-</ul>
-<a class="btn btn-primary mb-3" href="/expenses/new">新增支出</a>
+        <div class="col-12">
+            <ul class="list-group">
+                {{#each expenses}}
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-auto ">
+                            <div class="text-info">
+                                <i class="fa-solid fa-house fs-5"></i>
+                            </div>
+                        </div>
+                        <div class="col-auto me-auto">
+                                <h4>{{this.name}}</h4>
+                            <span>
+                                <small>{{ this.date }}</small>
+                            </span>
+                        </div>
+                        <div class="col-auto me-auto">
+                            
+                            <h4>
+                                {{this.amount}}元
+                            </h4>
+                        </div>
+                        <div class="col-auto">
+                            <a class="btn btn-success" href="/expenses/{{this._id}}/edit">edit</a>
+                            <form action="/expenses/{{this._id}}?_method=DELETE" method="POST" style="display: inline">
+                                <button class="btn btn-danger" type="submit">delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+        <div class="col-12 mt-3">
+            <a class="btn btn-lg btn-primary mb-3" href="/expenses/new">新增支出</a>
+        </div>
+    </div>  
+</div>
+

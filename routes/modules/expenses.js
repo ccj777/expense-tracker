@@ -5,11 +5,12 @@ const router = express.Router()
 const Expense = require('../../models/expense')
 
 // 定義路由
+// 導向new頁面
 router.get('/new', (req, res) => {
   return res.render('new')
 })
 
-// 首頁
+// 新增資料
 router.post('/', (req, res) => {
   // req.body.userId = req.user._id
   return Expense.create(req.body) // name存入資料庫,簡化 name:name -> name
@@ -18,7 +19,7 @@ router.post('/', (req, res) => {
 })
 
 
-// 根據不同id建立路由， edit
+//  導向edit頁面
 router.get('/:id/edit', (req, res) => {
   // const userId = req.user._id
   const _id = req.params.id
@@ -30,7 +31,7 @@ router.get('/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-//put 的路由
+// edit後修改資料庫內容
 router.put('/:id', (req, res) => {
   // const userId = req.user._id
   const _id = req.params.id
