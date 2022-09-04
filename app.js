@@ -11,7 +11,9 @@ if (process.env.NODE_ENV !== 'production') {
 const routes = require('./routes')
 require('./config/mongoose')
 
-const port = process.env.PORT
+// 如果在 Heroku 環境則使用 process.env.PORT
+// 否則為本地環境，使用 3000 
+const port = process.env.PORT || 3000
 
 const app = express()
 
