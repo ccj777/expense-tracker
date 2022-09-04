@@ -1,1 +1,48 @@
-     
+<div class="container p-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-8 mb-4 d-inline">
+      <h1 class="text-center">修改您的支出</h1>
+    </div>
+    <form action="/expenses/{{expense._id}}?_method=PUT" method="POST">
+      <div class="col-12 mb-4">
+        <label for="name" class="form-label">名稱 *：</label>
+        <input type="text" class="form-control" id="name" placeholder="名稱" name="name" value="{{expense.name}}" required>
+        <div class="invalid-feedback">
+          請輸入名稱
+        </div>
+
+      </div>
+      <div class="col-12 mb-4">
+        <label for="date" class="form-label">日期 *：</label>
+        <input type="date" class="form-control" id="date" placeholder="日期" name="date" value="{{ expense.date}}" required>
+        <div class="invalid-feedback">
+          請輸入日期
+        </div>
+      </div>
+      <div class="col-12 mb-4">
+        <label for="category" class="form-label">類別 *：</label>
+        <select class="form-select" id="category" aria-label=".form-select-lg example" name="category" value="{{expense.category}}"required>
+          <option selected disabled value="">選擇類別</option>
+          <option value="1">家居物業</option>
+          <option value="2">交通出行</option>
+          <option value="3">休閒娛樂</option>
+          <option value="4">餐飲食品</option>
+          <option value="5">其他</option>
+        </select>
+        <div class="invalid-feedback">
+          請選擇類別
+        </div>
+      </div>
+      <div class="col-12 mb-4">
+        <label for="amount" class="form-label">金額 *：</label>
+        <input type="number" class="form-control" id="amount" placeholder="金額" name="amount" value="{{expense.amount}}" required>
+        <div class="invalid-feedback">
+          請輸入金額
+        </div>
+      </div>
+      <div class="mx-auto">
+        <button class="btn btn-primary" type="submit">修改</button>
+      </div>
+    </form>
+  </div>
+</div>
