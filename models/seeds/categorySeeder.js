@@ -1,4 +1,4 @@
-const Categories = require('./../category')
+const Category = require('./../category')
 const db = require('../../config/mongoose')
 
 const categories = [
@@ -28,9 +28,9 @@ db.on('error', () => {
   console.log('mongodb error!')
 })
 db.once('open', () => {
-  console.log('categorySeed is running!')
+  console.log('categorySeeder is running!')
   Promise.all(categories.map(category => {
-    return Categories.create(category)
+    return Category.create(category)
     .then(category => {
       console.log(`category ${category.name} created.`)
     })
