@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Expenses = require('../../models/expenses')
+const Expenses = require('../../models/expense')
 
 router.get('/', (req, res) => {
   // const userId = req.user._id

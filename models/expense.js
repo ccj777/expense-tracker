@@ -14,7 +14,7 @@ const expensesSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Categories',
     index: 'true',
-    required: true
+    required: false
   },
   amount: {
     type: Number,
@@ -24,7 +24,7 @@ const expensesSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
     index: true,
-    required: true
+    required: false
   }
 })
 
