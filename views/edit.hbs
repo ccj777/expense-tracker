@@ -21,8 +21,8 @@
       </div>
       <div class="col-12 mb-4">
         <label for="category" class="form-label">類別 *：</label>
-        <select class="form-select" id="category" aria-label=".form-select-lg example" name="category" value="{{expense.category}}" required>
-          <option selected disabled value="">選擇類別</option>
+        <select class="form-select" id="category" aria-label=".form-select-lg " name="category" value="{{expense.category}}" required>
+          <option selected disabled >選擇類別</option>
           {{!--helper ifEqual 定義為兩質相同回傳true  --}}
           <option value="1" {{#ifEqual expense.categoryId 1 }}selected{{/ifEqual}}>家居物業</option>
           <option value="2" {{#ifEqual expense.categoryId 2 }}selected{{/ifEqual}}>交通出行</option>
