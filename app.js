@@ -23,12 +23,28 @@ app.engine('hbs', exphbs({
   defaultLayout: 'main',
   extname: '.hbs',
   helpers: {
+    // Date 只留年月日
     dateFormat(date) {
       return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
     },
     ifEqual(a, b, options) {
       return a === b ? options.fn(this) : options.inverse(this)
     },
+    // 根據categoryId回傳對應icon
+    icon(categoryId) {
+      switch (categoryId) {
+        case 1:
+          return 'fa-house'
+        case 2:
+          return 'fa-van-shuttle'
+        case 3:
+          return 'fa-face-grin-beam'
+        case 4:
+          return 'fa-utensils'
+        case 5:
+          return 'fa-pen'
+      }
+    }
   }
 }))
 app.set('view engine', 'hbs')

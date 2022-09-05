@@ -16,7 +16,7 @@
     </div>
     
     <div class="row text-center mt-3">
-        <div class="col d-flex justify-content-center mt-3" >
+        <div class="col d-flex justify-content-center mt-3">
                 <p>總金額：</p>
                 <h2 class="text-center text-success">{{ totalAmount }}</h2>
         </div>
@@ -27,21 +27,21 @@
                     <div class=" d-flex justify-content-between">
                             <div class=" mt-3">
                                 <div class="text-info">
-                                    <i class="fa-solid fa-house fs-5"></i>
+                                    {{!-- icon為自訂義 handlebars helper --}}
+                                    <i class="fa-solid {{icon this.categoryId}} fs-5"></i>
                                 </div>
                             </div>
                             <div class=" d-flex justify-content-between">
                                 <div class="">
                                     <h4>{{this.name}}</h4>
                                     <span>
+                                        {{!-- dateFormat 為自訂義 handlebars helper --}}
                                         <small>{{dateFormat this.date}}</small>
                                     </span>
                                 </div>
-                
                                     <h4>
                                         {{this.amount}}元
-                                    </h4>
-                                
+                                    </h4>  
                             </div>
                         <div class="mt-3">
                             <a class="btn btn-success" href="/expenses/{{this._id}}/edit">edit</a>
