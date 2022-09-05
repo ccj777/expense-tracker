@@ -62,6 +62,7 @@ app.use(session({
 }))
 
 usePassport(app)
+app.use(flash())
 app.use(routes)
 
 app.listen(port, () => {
