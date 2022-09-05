@@ -11,6 +11,9 @@ if (process.env.NODE_ENV !== 'production') {
 const routes = require('./routes')
 require('./config/mongoose')
 
+// 載入設定檔，要寫在 express-session 以後
+const usePassport = require('./config/passport')
+
 // 如果在 Heroku 環境則使用 process.env.PORT
 // 否則為本地環境，使用 3000 
 const port = process.env.PORT || 3000
@@ -58,6 +61,7 @@ app.use(session({
   saveUninitialized: true
 }))
 
+usePassport(app)
 app.use(routes)
 
 app.listen(port, () => {
