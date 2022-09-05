@@ -5,9 +5,8 @@ const Expenses = require('../../models/expense')
 
 // 導向首頁
 router.get('/', (req, res) => {
-  // const userId = req.user._id
-  //{ userId }
-  Expenses.find()
+  const userId = req.user._id
+  Expenses.find({ userId })
     .lean()
     .sort({ name: 'asc' }) // 正序asc，反序desc
     .then(expenses => {
@@ -22,9 +21,9 @@ router.get('/', (req, res) => {
 
 // POST select表單
 router.post('/category', (req, res) => {
-  console.log(req.body)
-  const category = req.body.category
-  Expenses.find({ categoryId: category })
+  const userId = req.user._id
+  const categoryId = req.body.category
+  Expenses.find({ categoryId, userId})
     .lean()
     .then(expenses => {
       let totalAmount = 0
